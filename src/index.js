@@ -4,4 +4,4 @@ const routes = require('./routes');
 const app = express();
 app.use(routes);
 
-app.listen(3000, () => console.log('Hello World'));
+app.listen(3000, () => console.log('🔥 server started at http://localhost:3000 '));
