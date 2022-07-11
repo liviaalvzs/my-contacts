@@ -26,8 +26,19 @@ class ContactController {
     // atualiza registro
   }
 
-  delete() {
+  async delete(request, response) {
     // deleta registro
+    const { id } = request.params;
+
+    const contact = await contactsRepository.findById(id);
+
+    if (!contact) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    await contactsRepository.delete(id);
+    // eslint-disable-next-line max-len
+    response.sendStatus(204); // no content, same as 200 (ok!) but when request is ok but without body
   }
 }
 
